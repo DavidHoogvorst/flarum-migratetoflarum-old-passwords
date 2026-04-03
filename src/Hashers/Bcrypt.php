@@ -10,6 +10,6 @@ class Bcrypt extends AbstractHasher
 
     function check(string $password, array $oldPassword): bool
     {
-        return $this->verifyPassword($password, Arr::get($oldPassword, 'password'));
+        return $this->verifyPassword($this->saltBeforeAfter($password, $oldPassword), Arr::get($oldPassword, 'password'));
     }
 }

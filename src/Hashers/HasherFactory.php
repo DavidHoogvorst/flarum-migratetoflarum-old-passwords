@@ -22,9 +22,8 @@ class HasherFactory
         'sha1-double-bcrypt' => Sha1DoubleBcrypt::class,
     ];
 
-    public function createHasher(array $oldPassword): AbstractHasher
+    public function createHasher($type): AbstractHasher
     {
-        $type = Arr::get($oldPassword, 'type');
         $class = Arr::get($this->types, $type);
 
         if (!$class) {
